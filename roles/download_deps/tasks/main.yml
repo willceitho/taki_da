@@ -1,0 +1,13 @@
+  - name: Install epel-release
+    package:
+      name: epel-release
+    when: ansible_os_family == 'RedHat'
+
+  - name: Install deps
+    package:
+      name: "{{ dependency_package_name }}"
+      state: latest
+
+  # - name: pip install packages 
+  #   pip: 
+  #     name: "{{ pip_package_name }}"

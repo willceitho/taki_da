@@ -1,0 +1,9 @@
+    - name: Install creds
+      authorized_key:
+        user: "{{ item.auth_user }}"
+        # key: "{{ lookup('file', 'files/ansible/id_ansible_rsa.pub') }}"
+        key: "{{ lookup('file', '{{ item.lookup_file_path }}') }}"
+      loop: "{{ node_users }}" 
+      # when: "{{ node_users }} == u'username': u'ansible'"
+    # - debug:
+    #     msg:  "as {{ node_users }} asd"

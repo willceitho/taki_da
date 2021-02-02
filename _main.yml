@@ -1,0 +1,51 @@
+---
+- name: Config Control Host
+  hosts: ctrl_host
+  # remote_user: "{{ remote_host_user }}"
+  vars_files:
+    - vars/jenkins.yml
+    - vars/ctrl_host.yml
+    - vars/java.yml
+  roles:
+    - create_users_and_groups
+    - ssh_create
+    - ssh_manipulate
+    - config_server
+    - geerlingguy.java
+    - geerlingguy.jenkins
+    - firewall
+#   tasks:
+#     - name: Install creds for ansible
+#       authorized_key:
+#         user: ansible
+#         key: "{{ lookup('file', 'files/ansible/id_ansible_rsa.pub') }}"
+
+- name: Config workers
+  hosts: workers
+  # remote_user: "{{ remote_worker_user }}"
+  vars_files:
+    - vars/workers.yml
+  roles:
+    - create_users_and_groups
+    # - tomcat
+    # - ansible-maven
+    # - firewall
+  tasks:
+    - name: Install creds for ansible
+      authorized_key:
+        user: ansible
+        key: "{{ lookup('file', 'files/ansible/id_ansible_rsa.pub') }}"
+
+    - name: Install jenkins creds for root
+      authorized_key:
+        user: root
+        key: "{{ lookup('file', 'files/jenkins/id_rsa.pub') }}"
+# - name: Config db
+#   hosts: db
+#   vars:
+#     remote_worker_user: worker
+#     firewall_port: 3306
+#   roles:
+#     # - geerlingguy.mysql
+#     - db_conf
+#     # - firewall

@@ -1,0 +1,14 @@
+- name: Create database user with name 'bob' and password '12345' with all database privileges
+  #community.mysql.
+  mysql_user:
+    name: worker
+    password: qweqweqwE_1
+    host: "%"
+    priv: '*.*:ALL'
+    state: present
+- shell: 'id'
+# - name: Create a new database with name 'bobdata'
+#   #community.mysql.
+#   mysql_db:
+#     name: test_env
+#     state: present

@@ -1,0 +1,5 @@
+ansible_user                 : root
+ansible_ssh_pass             : p@ssw0rd
+#ansible_sudo_pass            : qw
+# enviroment                   : PRODUCTION
+# peremennaya                  : peremennaya

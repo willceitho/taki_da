@@ -1,0 +1,25 @@
+---
+node_users:
+  - username: ansible
+    uid: 4000
+    group: ansible
+    groups: #docker
+    shell: /bin/bash
+    home: /home/ansible/
+
+  # - username: nginx
+  #   uid: 4001
+  #   group: nginx
+  #   groups:
+  #   shell: /bin/bash
+  #   home: false
+
+node_groups:
+
+  - groupname: ansible
+    groupid: 4000
+    sudo: true
+
+  - groupname: jenkins
+    groupid: 4002
+    sudo: true

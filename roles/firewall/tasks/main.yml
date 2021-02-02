@@ -1,0 +1,32 @@
+# - name: Add app port to firewalld
+#   firewalld:
+#     service: jenkins
+#     permanent: yes
+#     state: enabled
+#     # state: disabled
+#   notify: Restart firewalld
+
+- name: Add app port to firewalld
+  firewalld:
+    port: "{{ firewall_port }}/tcp"
+    permanent: yes
+    state: enabled
+    # state: disabled
+  notify: Restart firewalld
+
+# - name: traffic in default zone for jenkins service
+#   ansible.posix.firewalld:
+#     service: jenkins
+#     permanent: yes
+#     # state: enabled
+#     state: disabled
+#   notify: Restart firewalld
+
+# - name: traffic in default zone on port 8080/tcp
+#   ansible.posix.firewalld:
+#     port: 8080/tcp
+#     permanent: yes
+#     # state: enabled
+#     state: disabled
+#   notify: Restart firewalld
+
