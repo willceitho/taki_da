@@ -11,7 +11,7 @@
 
 - name: Install Java on CentOS
   package:
-    name: java-1.8.0-openjdk
+    name:  ['java-1.8.0-openjdk', 'java-1.8.0-openjdk-devel']
     state: present
 
 - name: Add tomcat group
