@@ -1,9 +1,10 @@
 # [Dependencies]
 dependency_package_name: 
-  - wget
+  - MySQL-python
+  # - wget
   # - git
   # - python-pip
-  - ansible
-  - sshpass
+  # - ansible
+  # - sshpass
 pip_package_name:
   # - ansible

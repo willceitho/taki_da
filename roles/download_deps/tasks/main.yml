@@ -1,7 +1,7 @@
-  - name: Install epel-release
-    package:
-      name: epel-release
-    when: ansible_os_family == 'RedHat'
+#  - name: Install epel-release
+#    package:
+#      name: epel-release
+#    when: ansible_os_family == 'RedHat'
 
   - name: Install deps
     package:

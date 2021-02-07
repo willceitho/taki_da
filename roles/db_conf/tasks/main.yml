@@ -6,9 +6,8 @@
     host: "%"
     priv: '*.*:ALL'
     state: present
-- shell: 'id'
-# - name: Create a new database with name 'bobdata'
-#   #community.mysql.
-#   mysql_db:
-#     name: test_env
-#     state: present
+- name: Create a new database with name 'bobdata'
+  #community.mysql.
+  mysql_db:
+    name: test_env
+    state: present
