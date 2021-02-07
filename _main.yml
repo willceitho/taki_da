@@ -1,7 +1,6 @@
 ---
 - name: Config Control Host
   hosts: ctrl_host
-  # remote_user: "{{ remote_host_user }}"
   vars_files:
     - vars/jenkins.yml
     - vars/ctrl_host.yml
@@ -12,9 +11,9 @@
     - ssh_create
     - ssh_manipulate
     - config_server
-#    - geerlingguy.java
-#    - geerlingguy.jenkins
-    - maven
+    - geerlingguy.java
+    - geerlingguy.jenkins
+#    - maven
     - firewall
   tasks:
     - name: Install creds for ansible
@@ -24,15 +23,14 @@
 
 - name: Config workers
   hosts: workers
-#  # remote_user: "{{ remote_worker_user }}"
   vars_files:
     - vars/workers.yml
   roles:
     - resolv
     - create_users_and_groups
     # - geerlingguy.java
-    - tomcat
-    - maven
+    # - tomcat
+    # - maven
     # - firewall
   tasks:
     - name: Install creds for ansible
