@@ -7,55 +7,48 @@
     - vars/java.yml
   roles:
     - resolv
+    - download_deps
+
+    ##### Users and ssh-keys
     - create_users_and_groups
     - ssh_create
     - ssh_manipulate
+    - install_creds
+
     - config_server
     - geerlingguy.java
     - geerlingguy.jenkins
-#    - maven
+    - geerlingguy.mysql
+    - db_conf
+    - maven
     - firewall
-  tasks:
-    - name: Install creds for ansible
-      authorized_key:
-        user: ansible
-        key: "{{ lookup('file', 'files/ansible/id_ansible_rsa.pub') }}"
+
 
 - name: Config workers
   hosts: workers
   vars_files:
     - vars/workers.yml
+    - vars/java.yml
   roles:
     - resolv
-    - create_users_and_groups
-    # - geerlingguy.java
-    # - tomcat
-    # - maven
-    # - firewall
-  tasks:
-    - name: Install creds for ansible
-      authorized_key:
-        user: ansible
-        key: "{{ lookup('file', 'files/ansible/id_ansible_rsa.pub') }}"
+    - download_deps
 
-    - name: Install jenkins creds for root
-      authorized_key:
-        user: root
-        key: "{{ lookup('file', 'files/jenkins/id_rsa.pub') }}"
+    ###### Users and ssh-keys
+    - create_users_and_groups
+    - install_creds
+    
+    - geerlingguy.java
+    - tomcat
+    - maven
+    - firewall
+
 - name: Config db
   hosts: db
+  vars_files:
+    - vars/db.yml
   roles:
     - resolv
-    - geerlingguy.mysql
     - download_deps
+    - geerlingguy.mysql
     - db_conf
-
-# - name: Config gitlab
-#   hosts: gitlab
-# #   vars_files:
-# #   roles:
-#   tasks:
-#     - name: Install jenkins creds for root
-#       authorized_key:
-#         user: root
-#         key: "{{ lookup('file', 'files/jenkins/id_rsa.pub') }}"
+    - firewall

@@ -36,3 +36,13 @@ node_users:
     user_ssh_key: /var/lib/jenkins/.ssh/id_rsa
     user_ssh_key_pub: /var/lib/jenkins/.ssh/id_rsa.pub
     fletched_dir: files/jenkins/
+auth_users:
+  - user: ansible
+    key: "{{ lookup('file', 'files/ansible/id_ansible_rsa.pub') }}"
+
+# [Firewall config]
+jenkins_http_port: 8888
+db_port: 3306
+firewall_port: 
+  - "{{ jenkins_http_port }}"
+  - "{{ db_port }}"

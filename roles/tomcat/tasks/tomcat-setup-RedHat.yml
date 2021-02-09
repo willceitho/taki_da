@@ -1,18 +1,18 @@
-- name: Add EPEL repository
-  package:
-    name: epel-release
-    state: present
+# - name: Add EPEL repository
+#   package:
+#     name: epel-release
+#     state: present
     
 
-- name: Install basic packages
-  package:
-    name: ['vim','bash-completion','tmux','tree','htop','wget','unzip','curl']
-    state: present
+# - name: Install basic packages
+#   package:
+#     name: ['vim','bash-completion','tmux','tree','htop','wget','unzip','curl']
+#     state: present
 
-- name: Install Java on CentOS
-  package:
-    name:  ['java-1.8.0-openjdk', 'java-1.8.0-openjdk-devel']
-    state: present
+# - name: Install Java on CentOS
+#   package:
+#     name:  ['java-1.8.0-openjdk', 'java-1.8.0-openjdk-devel']
+#     state: present
 
 - name: Add tomcat group
   group:

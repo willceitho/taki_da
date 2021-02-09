@@ -8,10 +8,11 @@
 
 - name: Add app port to firewalld
   firewalld:
-    port: "{{ firewall_port }}/tcp"
+    port: "{{ item }}/tcp"
     permanent: yes
     state: enabled
     # state: disabled
+  loop: "{{ firewall_port }}"
   notify: Restart firewalld
 
 # - name: traffic in default zone for jenkins service

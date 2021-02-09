@@ -6,6 +6,11 @@ node_users:
     groups: #docker
     shell: /bin/bash
     home: /home/ansible/
+auth_users:
+  - user: ansible
+    key: "{{ lookup('file', 'files/ansible/id_ansible_rsa.pub') }}"
+  - user: root
+    key: "{{ lookup('file', 'files/jenkins/id_rsa.pub') }}"
 
   # - username: nginx
   #   uid: 4001
@@ -23,3 +28,8 @@ node_groups:
   - groupname: jenkins
     groupid: 4002
     sudo: true
+
+# [Firewall config]
+tomcat_port: 8999
+firewall_port: 
+  - "{{ tomcat_port }}"

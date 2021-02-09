@@ -13,23 +13,23 @@
       flat: true
     loop: "{{ node_users }}"
 
-  - name: copy ansible_key to jenkins
-    copy:
-      src: "{{ ans_user_ssh_key }}"
-      dest: "{{ jenkins_ssh_dir }}"
-      owner: jenkins
-      group: jenkins
-      remote_src: yes
+  # - name: copy ansible_key to jenkins
+  #   copy:
+  #     src: "{{ ans_user_ssh_key }}"
+  #     dest: "{{ jenkins_ssh_dir }}"
+  #     owner: jenkins
+  #     group: jenkins
+  #     remote_src: yes
 
-  - name: chown
-    file:
-      path: /var/lib/jenkins/.ssh/
-      owner: jenkins
-      group: jenkins
-      recurse: yes 
-      mode: '700'
+  # - name: chown
+  #   file:
+  #     path: /var/lib/jenkins/.ssh/
+  #     owner: jenkins
+  #     group: jenkins
+  #     recurse: yes 
+  #     mode: '700'
 
-  - name: Ensure ssh config to jenkins is created
-    copy:
-      src: files/jenkins_ssh_config
-      dest: /var/lib/jenkins/.ssh/config
+  # - name: Ensure ssh config to jenkins is created
+  #   copy:
+  #     src: files/jenkins_ssh_config
+  #     dest: /var/lib/jenkins/.ssh/config
